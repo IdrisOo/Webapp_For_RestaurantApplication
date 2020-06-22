@@ -10,6 +10,7 @@ class OrdersPage extends StatefulWidget {
 
 class _OrdersPage extends State<OrdersPage> {
   var x = Firestore.instance;
+  var y = Firestore.instance;
   String total;
 
   @override
@@ -140,7 +141,7 @@ class _OrdersPage extends State<OrdersPage> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Container(
                                             child: RaisedButton(
@@ -174,6 +175,39 @@ class _OrdersPage extends State<OrdersPage> {
                                               ),
                                             ),
                                           ),
+                                          SizedBox(width: 15),
+                                          Container(
+                                            child: RaisedButton(
+                                              onPressed: () {
+                                                y
+                                                    .collection('waiting')
+                                                    .where('tablenumber',
+                                                        isEqualTo: tablenum)
+                                                    .getDocuments()
+                                                    .then((snapshot) {
+                                                  for (DocumentSnapshot ds
+                                                      in snapshot.documents) {
+                                                    ds.reference.delete();
+                                                  }
+                                                });
+                                              },
+                                              color: Colors.greenAccent,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              child: Text(
+                                                'Finished',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: 'Varela',
+                                                    letterSpacing: 1,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(width: 50),
                                           Container(
                                             child: Text(
                                               'Total Payment:' +
