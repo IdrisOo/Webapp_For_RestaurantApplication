@@ -81,7 +81,7 @@ class _LoginPage extends State<LoginPage> {
                                                 border: Border(
                                                     bottom: BorderSide(
                                                         color:
-                                                            Colors.grey[200]))),
+                                                            Colors.grey[300]))),
                                             child: TextFormField(
                                               keyboardType:
                                                   TextInputType.emailAddress,
@@ -113,7 +113,7 @@ class _LoginPage extends State<LoginPage> {
                                                 border: Border(
                                                     bottom: BorderSide(
                                                         color:
-                                                            Colors.grey[200]))),
+                                                            Colors.grey[300]))),
                                             child: TextFormField(
                                               validator: (val) => val.isEmpty
                                                   ? 'Enter the password'
@@ -183,7 +183,18 @@ class _LoginPage extends State<LoginPage> {
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontSize: 20),
-                                                ))))
+                                                )))),
+                                                SizedBox(height: 20,),
+                                        Container(
+                                          child: Text(
+                                            error,
+                                            style: TextStyle(
+                                                fontFamily: 'Varela',
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xFFF17532)),
+                                          ),
+                                        )
                                       ],
                                     ),
                                   )
